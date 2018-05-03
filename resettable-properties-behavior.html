@@ -34,8 +34,9 @@ data: {
 **/
   ResettablePropertiesBehavior = {
     _resetProperties: function(group) {
-      for (var propertyName in this.properties) {
-        var property = this.properties[propertyName];
+      var properties = this.constructor && this.constructor.properties ? this.constructor.properties : this.properties;
+      for (var propertyName in properties) {
+        var property = properties[propertyName];
         if (property.resettable) {
           if (!group || (property.resetGroups && property.resetGroups.indexOf(group) > -1)) {
             this.set(propertyName, property.value());
