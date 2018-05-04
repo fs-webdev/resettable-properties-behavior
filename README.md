@@ -7,6 +7,7 @@
 > `ResettablePropertiesBehavior` requires properties that use this behavior to have a function as their value.
 
 Set `resettable` to true for properties to reset them with `resetProperties`.
+
 ```javascript
 data: {
   type: Array,
@@ -18,6 +19,7 @@ data: {
 ```
 
 Optionally set `resetGroups` to only reset a subset of resettable properties with `resetPropertyGroup(group)`.
+
 ```javascript
 data: {
   type: Array,
