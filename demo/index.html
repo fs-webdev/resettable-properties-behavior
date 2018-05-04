@@ -14,8 +14,16 @@
 
     <style is="custom-style" include="demo-pages-shared-styles">
     </style>
+    <style>
+      .test {
+        float: right;
+      }
+    </style>
   </head>
   <body>
+    <a href="../test/index.html" target="_blank" title="As long as your /test directory has an index.html base test, this link should work">
+      <button class="fs-button fs-button--recommended test" role="button">Run Tests</button>
+    </a>
     <div class="vertical-section-container centered">
       <h3>Basic resettable-properties-behavior demo</h3>
       <demo-snippet>

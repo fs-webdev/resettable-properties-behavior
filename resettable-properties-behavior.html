@@ -32,31 +32,31 @@ data: {
 @polymerBehavior ResettablePropertiesBehavior
 @demo demo/index.html
 **/
-  ResettablePropertiesBehavior = {
-    _resetProperties: function(group) {
-      var properties = this.constructor && this.constructor.properties ? this.constructor.properties : this.properties;
-      for (var propertyName in properties) {
-        var property = properties[propertyName];
-        if (property.resettable) {
-          if (!group || (property.resetGroups && property.resetGroups.indexOf(group) > -1)) {
-            this.set(propertyName, property.value());
-          }
+ResettablePropertiesBehavior = { // eslint-disable-line no-global-assign
+  _resetProperties: function (group) {
+    var properties = this.constructor && this.constructor.properties ? this.constructor.properties : this.properties;
+    for (var propertyName in properties) {
+      var property = properties[propertyName];
+      if (property.resettable) {
+        if (!group || (property.resetGroups && property.resetGroups.indexOf(group) > -1)) {
+          this.set(propertyName, property.value());
         }
       }
-    },
+    }
+  },
 
-    /* Resets all resettable properties.
+  /* Resets all resettable properties.
     */
-    resetProperties: function() {
-      this._resetProperties();
-    },
+  resetProperties: function () {
+    this._resetProperties();
+  },
 
-    /* Resets all resettable properties that have `group` in their `resetGroups`.
+  /* Resets all resettable properties that have `group` in their `resetGroups`.
     */
-    resetPropertyGroup: function(group) {
-      if (group.length) {
-        this._resetProperties(group);
-      }
+  resetPropertyGroup: function (group) {
+    if (group.length) {
+      this._resetProperties(group);
     }
   }
+};
 </script>

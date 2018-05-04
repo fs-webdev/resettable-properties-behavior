@@ -1,0 +1,67 @@
+{
+  "plugins": {
+    "local": {
+      "browsers": [ "chrome" ]
+    },
+    "sauce": {
+      "browsers": [
+        {
+          "browserName":  "safari",
+          "platform":     "OS X 10.12",
+          "version":      "11"
+        },
+        {
+          "browserName":  "chrome",
+          "platform":     "OS X 10.12"
+        },
+        {
+          "browserName":  "firefox",
+          "platform":     "OS X 10.12"
+        },
+        {
+          "browserName":  "microsoftedge",
+          "platform":     "Windows 10"
+        },
+        {
+          "browserName":  "chrome",
+          "platform":     "Windows 10"
+        },
+        {
+          "browserName":  "firefox",
+          "platform":     "Windows 10"
+        }
+      ]
+    },
+    "istanbub": {
+      "dir": "./reports/coverage",
+      "reporters": ["text", "text-summary", "lcov"],
+      "include": [
+        "**/*.html",
+        "**/*.js"
+      ],
+      "exclude": [
+        "**/*polyfill*",
+        "**/bin/*",
+        "**/bower_components/**/*",
+        "**/demo/*",
+        "**/locales/*",
+        "**/node_modules/**/*",
+        "**/reports/*",
+        "**/test/*"
+      ],
+      "thresholds": {
+        "global": {
+          "statements": 95,
+          "branches": 70,
+          "functions": 95,
+          "lines": 95
+        }
+      }
+    },
+    "size-limit": {
+      "path": "resettable-properties-behavior.html",
+      "limitNoPolymer": "1 KB",
+      "limitNoExternals": "1 KB"
+    }
+  }
+}

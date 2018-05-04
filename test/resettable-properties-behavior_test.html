@@ -1,10 +1,10 @@
 <!doctype html>
+
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
-
     <title>resettable-properties-behavior test</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
 
     <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
     <script src="../../web-component-tester/browser.js"></script>
@@ -19,60 +19,63 @@
     </test-fixture>
 
     <script>
-      suite('resettable-properties-behavior', function() {
-        test('String resettable', function() {
-          var el = fixture('basic');
-          assert.equal(el.stringProperty, 'hello');
-          el.resetProperties();
-          assert.equal(el.stringProperty, 'foobar');
-        });
+      document.addEventListener('WebComponentsReady', function(){
+        describe('resettable-properties-behavior', function() {
+          var el;
+          beforeEach(function() {
+            el = fixture('basic');
+          });
 
-        test('Boolean resettable', function() {
-          var el = fixture('basic');
-          assert.equal(el.booleanProperty, true);
-          el.resetProperties();
-          assert.equal(el.booleanProperty, false);
-        });
+          afterEach(function() {
+          })
 
-        test('Number resettable', function() {
-          var el = fixture('basic');
-          el.numberProperty = 0;
-          assert.equal(el.numberProperty, 0);
-          el.resetProperties();
-          assert.equal(el.numberProperty, 1);
-        });
+          it('should reset String values', function() {
+            assert.equal(el.stringProperty, 'hello');
+            el.resetProperties();
+            assert.equal(el.stringProperty, 'foobar');
+          });
 
-        test('Array resettable', function() {
-          var el = fixture('basic');
-          el.arrayProperty = ['hello'];
-          assert.equal(JSON.stringify(el.arrayProperty), JSON.stringify(['hello']));
-          el.resetProperties();
-          assert.equal(JSON.stringify(el.arrayProperty), JSON.stringify([]));
-        });
+          it('should reset Boolean values', function() {
+            assert.equal(el.booleanProperty, true);
+            el.resetProperties();
+            assert.equal(el.booleanProperty, false);
+          });
 
-        test('Object resettable', function() {
-          var el = fixture('basic');
-          el.objectProperty = {foo: 1};
-          assert.equal(JSON.stringify(el.objectProperty), JSON.stringify({foo: 1}));
-          el.resetProperties();
-          assert.equal(JSON.stringify(el.objectProperty), JSON.stringify({}));
-        });
+          it('should reset Number values', function() {
+            el.numberProperty = 0;
+            assert.equal(el.numberProperty, 0);
+            el.resetProperties();
+            assert.equal(el.numberProperty, 1);
+          });
 
-        test('Date resettable', function() {
-          var el = fixture('basic');
-          el.dateProperty = new Date('1990-08-23');
-          assert.equal(el.dateProperty.getTime(), new Date('1990-08-23').getTime());
-          el.resetProperties();
-          assert.equal(el.dateProperty.getTime(), new Date('1970-01-01').getTime());
-        });
+          it('should reset Array values', function() {
+            el.arrayProperty = ['hello'];
+            assert.equal(JSON.stringify(el.arrayProperty), JSON.stringify(['hello']));
+            el.resetProperties();
+            assert.equal(JSON.stringify(el.arrayProperty), JSON.stringify([]));
+          });
 
-        test('Group reset', function() {
-          var el = fixture('basic');
-          assert.equal(el.stringProperty, 'hello');
-          assert.equal(el.booleanProperty, true);
-          el.resetPropertyGroup('string-group');
-          assert.equal(el.stringProperty, 'foobar');
-          assert.equal(el.booleanProperty, true);
+          it('should reset Object values', function() {
+            el.objectProperty = {foo: 1};
+            assert.equal(JSON.stringify(el.objectProperty), JSON.stringify({foo: 1}));
+            el.resetProperties();
+            assert.equal(JSON.stringify(el.objectProperty), JSON.stringify({}));
+          });
+
+          it('should reset Date values', function() {
+            el.dateProperty = new Date('1990-08-23');
+            assert.equal(el.dateProperty.getTime(), new Date('1990-08-23').getTime());
+            el.resetProperties();
+            assert.equal(el.dateProperty.getTime(), new Date('1970-01-01').getTime());
+          });
+
+          it('should reset Group values', function() {
+            assert.equal(el.stringProperty, 'hello');
+            assert.equal(el.booleanProperty, true);
+            el.resetPropertyGroup('string-group');
+            assert.equal(el.stringProperty, 'foobar');
+            assert.equal(el.booleanProperty, true);
+          });
         });
       });
     </script>

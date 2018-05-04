@@ -1,0 +1,10 @@
+**/*bower_components*/**
+**/*min.*
+**/*node_modules*/**
+**/*polyfill*
+**/demo/**
+**/reports/**
+**/test/**
+**/vendor/**
+analysis.json
+gulpfile.js
