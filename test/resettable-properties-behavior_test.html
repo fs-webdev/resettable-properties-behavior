@@ -69,6 +69,21 @@
             assert.equal(el.dateProperty.getTime(), new Date('1970-01-01').getTime());
           });
 
+          it('should reset values without value functions', function() {
+            el.noValueFunctionProperty = 'barrel';
+            expect(el.noValueFunctionProperty).to.equal('barrel');
+            el.resetProperties();
+            expect(el.noValueFunctionProperty).to.equal('larb');
+          });
+
+          it('should not reset values without resettable', function() {
+            el.notResettableProperty = 'barrel';
+            expect(el.notResettableProperty).to.equal('barrel');
+            el.resetProperties();
+            expect(el.notResettableProperty).to.equal('barrel');
+            expect(el.notResettableProperty).to.not.equal('cancan');
+          });
+
           it('should reset Group values', function() {
             assert.equal(el.stringProperty, 'hello');
             assert.equal(el.booleanProperty, true);
