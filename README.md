@@ -4,8 +4,6 @@
 
 `ResettablePropertiesBehavior` lets you easily reset polymer element properties to their default values.
 
-> `ResettablePropertiesBehavior` requires properties that use this behavior to have a function as their value.
-
 Set `resettable` to true for properties to reset them with `resetProperties`.
 
 ```javascript
@@ -15,6 +13,14 @@ data: {
   value: function() {
     return [];
   }
+}
+```
+or
+```javascript
+data: {
+  type: Array,
+  resettable: true,
+  value: []
 }
 ```
 
