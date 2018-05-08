@@ -35,8 +35,8 @@ data: {
 ResettablePropertiesBehavior = { // eslint-disable-line no-global-assign
   _resetProperties: function (group) {
     var properties = this.constructor && this.constructor.properties ? this.constructor.properties : this.properties;
-    var defaultPropObject = Object.entries(properties).reduce((acc, [key, {value, resettable = false, resetGroups = []}]) => {
-      if (resettable && (!group || resetGroups.includes(group))) {
+    var defaultPropObject = Object.entries(properties).reduce((acc, [key, {value, resettable, resetGroups}]) => {
+      if (resettable && (!group || (resetGroups && resetGroups.includes(group)))) {
         acc[key] = typeof value === 'function' ? value() : value;
       }
       return acc;
