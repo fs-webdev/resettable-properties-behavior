@@ -60,16 +60,18 @@
           },
         },
 
-        objectPropertyNoFunction: {
+        objectPropertyFunctionValues: {
           type: Object,
           resettable: true,
-          value: {
-            areYouCrazyDontGoBetweenThem: true,
-            goBetweenThemAreYouCrazy: false,
-            iSaidGoAround: true,
-            youSaidGoBetweenThem: false,
-            iSaid: "Don't go between them!",
-            numberOfBoats: 4
+          value: () => {
+            return {
+              areYouCrazyDontGoBetweenThem: true,
+              goBetweenThemAreYouCrazy: false,
+              iSaidGoAround: true,
+              youSaidGoBetweenThem: false,
+              iSaid: "Don't go between them!",
+              numberOfBoats: 4
+            }
           }
         },
 
