@@ -38,7 +38,7 @@ data: {
 ```
 
 ## Warning!
-Polymer elements cannont have Object/Array properties that use a value function.
+Because of limitations in Polymer, properties of type `Object` or `Array` must have a defined value function that returns the desired default.
 [See here.](https://www.polymer-project.org/1.0/docs/devguide/properties)
 **This will not work.**
 ```javascript
