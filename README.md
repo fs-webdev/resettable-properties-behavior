@@ -4,17 +4,23 @@
 
 `ResettablePropertiesBehavior` lets you easily reset polymer element properties to their default values.
 
-> `ResettablePropertiesBehavior` requires properties that use this behavior to have a function as their value.
-
 Set `resettable` to true for properties to reset them with `resetProperties`.
 
 ```javascript
 data: {
-  type: Array,
+  type: String,
   resettable: true,
   value: function() {
-    return [];
+    return '';
   }
+}
+```
+or
+```javascript
+data: {
+  type: String,
+  resettable: true,
+  value: ''
 }
 ```
 
@@ -27,6 +33,20 @@ data: {
   resetGroups: ['group-name'],
   value: function() {
     return [];
+  }
+}
+```
+
+## Warning!
+Because of limitations in Polymer, properties of type `Object` or `Array` must have a defined value function that returns the desired default.
+[See here.](https://www.polymer-project.org/1.0/docs/devguide/properties)
+**This will not work.**
+```javascript
+data: {
+  type: Object,
+  resettable: true,
+  value: { // This does not work. Don't do this.
+    foo: 'bar'
   }
 }
 ```

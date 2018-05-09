@@ -69,6 +69,37 @@
             assert.equal(el.dateProperty.getTime(), new Date('1970-01-01').getTime());
           });
 
+          it('should reset values without value functions', function() {
+            el.noValueFunctionProperty = 'barrel';
+            expect(el.noValueFunctionProperty).to.equal('barrel');
+            el.resetProperties();
+            expect(el.noValueFunctionProperty).to.equal('larb');
+          });
+
+          it('should reset object values without value functions', function() {
+            el.objectPropertyFunctionValues.areYouCrazyDontGoBetweenThem = false;
+            el.objectPropertyFunctionValues.goBetweenThemAreYouCrazy = true;
+            el.objectPropertyFunctionValues.iSaidGoAround = false;
+            el.objectPropertyFunctionValues.youSaidGoBetweenThem = true;
+            el.objectPropertyFunctionValues.iSaid = "Maybe you should try reading books instead of burning them!";
+            el.objectPropertyFunctionValues.numberOfBoats = 3;
+            el.resetProperties();
+            expect(el.objectPropertyFunctionValues.areYouCrazyDontGoBetweenThem, 'areYouCrazyDontGoBetweenThem boolean not reset').to.be.true;
+            expect(el.objectPropertyFunctionValues.goBetweenThemAreYouCrazy, 'goBetweenThemAreYouCrazy boolean not reset').to.be.false;
+            expect(el.objectPropertyFunctionValues.iSaidGoAround, 'iSaidGoAround boolean not reset').to.be.true;
+            expect(el.objectPropertyFunctionValues.youSaidGoBetweenThem, 'youSaidGoBetweenThem boolean not reset').to.be.false;
+            expect(el.objectPropertyFunctionValues.iSaid, 'iSaid string not reset').to.equal("Don't go between them!");
+            expect(el.objectPropertyFunctionValues.numberOfBoats, 'numberOfBoats int not reset').to.equal(4);
+          });
+
+          it('should not reset values without resettable', function() {
+            el.notResettableProperty = 'barrel';
+            expect(el.notResettableProperty).to.equal('barrel');
+            el.resetProperties();
+            expect(el.notResettableProperty).to.equal('barrel');
+            expect(el.notResettableProperty).to.not.equal('cancan');
+          });
+
           it('should reset Group values', function() {
             assert.equal(el.stringProperty, 'hello');
             assert.equal(el.booleanProperty, true);

@@ -60,12 +60,36 @@
           },
         },
 
+        objectPropertyFunctionValues: {
+          type: Object,
+          resettable: true,
+          value: () => {
+            return {
+              areYouCrazyDontGoBetweenThem: true,
+              goBetweenThemAreYouCrazy: false,
+              iSaidGoAround: true,
+              youSaidGoBetweenThem: false,
+              iSaid: "Don't go between them!",
+              numberOfBoats: 4
+            }
+          }
+        },
+
         dateProperty: {
           type: Date,
           resettable: true,
           value: function() {
             return new Date('1970-01-01');
-          },
+          }
+        },
+        noValueFunctionProperty: {
+          type: String,
+          resettable: true,
+          value: 'larb'
+        },
+        notResetabbleProperty: {
+          type: String,
+          value: 'cancan'
         }
       }
 

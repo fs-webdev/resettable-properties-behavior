@@ -35,14 +35,14 @@ data: {
 ResettablePropertiesBehavior = { // eslint-disable-line no-global-assign
   _resetProperties: function (group) {
     var properties = this.constructor && this.constructor.properties ? this.constructor.properties : this.properties;
-    for (var propertyName in properties) {
-      var property = properties[propertyName];
-      if (property.resettable) {
-        if (!group || (property.resetGroups && property.resetGroups.indexOf(group) > -1)) {
-          this.set(propertyName, property.value());
-        }
+    var defaultPropObject = Object.entries(properties).reduce((acc, [key, {value, resettable, resetGroups}]) => {
+      if (resettable && (!group || (resetGroups && resetGroups.includes(group)))) {
+        acc[key] = typeof value === 'function' ? value() : value;
       }
-    }
+      return acc;
+    }, {});
+
+    Object.assign(this, defaultPropObject);
   },
 
   /* Resets all resettable properties.
