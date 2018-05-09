@@ -76,6 +76,22 @@
             expect(el.noValueFunctionProperty).to.equal('larb');
           });
 
+          it('should reset object values without value functions', function() {
+            el.objectPropertyNoFunction.areYouCrazyDontGoBetweenThem = false;
+            el.objectPropertyNoFunction.goBetweenThemAreYouCrazy = true;
+            el.objectPropertyNoFunction.iSaidGoAround = false;
+            el.objectPropertyNoFunction.youSaidGoBetweenThem = true;
+            el.objectPropertyNoFunction.iSaid = "Maybe you should try reading books instead of burning them!";
+            el.objectPropertyNoFunction.numberOfBoats = 3;
+            el.resetProperties();
+            expect(el.objectPropertyNoFunction.areYouCrazyDontGoBetweenThem, 'areYouCrazyDontGoBetweenThem boolean not reset').to.be.true;
+            expect(el.objectPropertyNoFunction.goBetweenThemAreYouCrazy, 'goBetweenThemAreYouCrazy boolean not reset').to.be.false;
+            expect(el.objectPropertyNoFunction.iSaidGoAround, 'iSaidGoAround boolean not reset').to.be.true;
+            expect(el.objectPropertyNoFunction.youSaidGoBetweenThem, 'youSaidGoBetweenThem boolean not reset').to.be.false;
+            expect(el.objectPropertyNoFunction.iSaid, 'iSaid string not reset').to.equal("Don't go between them!");
+            expect(el.objectPropertyNoFunction.numberOfBoats, 'numberOfBoats int not reset').to.equal(4);
+          });
+
           it('should not reset values without resettable', function() {
             el.notResettableProperty = 'barrel';
             expect(el.notResettableProperty).to.equal('barrel');
