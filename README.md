@@ -8,19 +8,19 @@ Set `resettable` to true for properties to reset them with `resetProperties`.
 
 ```javascript
 data: {
-  type: Array,
+  type: String,
   resettable: true,
   value: function() {
-    return [];
+    return '';
   }
 }
 ```
 or
 ```javascript
 data: {
-  type: Array,
+  type: String,
   resettable: true,
-  value: []
+  value: ''
 }
 ```
 
@@ -33,6 +33,20 @@ data: {
   resetGroups: ['group-name'],
   value: function() {
     return [];
+  }
+}
+```
+
+## Warning!
+Polymer elements cannont have Object/Array properties that use a value function.
+[See here.](https://www.polymer-project.org/1.0/docs/devguide/properties)
+**This will not work.**
+```javascript
+data: {
+  type: Object,
+  resettable: true,
+  value: { // This does not work. Don't do this.
+    foo: 'bar'
   }
 }
 ```
