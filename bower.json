@@ -1,6 +1,6 @@
 {
   "name": "resettable-properties-behavior",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Polymer behavior that lets you easily reset polymer element properties to their default values.",
   "main": "resettable-properties-behavior.html",
   "dependencies": {
@@ -13,12 +13,17 @@
     "webcomponentsjs": "webcomponents/webcomponentsjs#0.7 - 1"
   },
   "ignore": [
-    ".*",
-    "bin/",
-    "bin/*",
-    "test/",
-    "test/*",
-    "wct.conf.json"
+    "**/.*",
+    "**/node_modules",
+    "**/bower_components",
+    "**/components",
+    "**/demo",
+    "**/test",
+    "gulpfile.js",
+    "package.json",
+    "src/",
+    "src/*",
+    "wct.*.json"
   ],
   "authors": [
     "Daniel Liljeström"
