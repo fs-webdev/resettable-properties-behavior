@@ -1,6 +1,6 @@
 {
   "name": "resettable-properties-behavior",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "directories": {
     "test": "test"
   },
@@ -28,7 +28,8 @@
     "standard": "semistandard --verbose '**/*.html' '**/*.js' | snazzy && stylelint '**/*.html' '**/*.css'",
     "standard-fix": "semistandard --verbose '**/*.html' '**/*.js' --fix | snazzy && stylelint '**/*.html' '**/*.css' --fix",
     "test": "wct --skip-plugin sauce",
-    "test-p": "wct --skip-plugin sauce -p"
+    "test-p": "wct --skip-plugin sauce -p",
+    "test-s": "wct --configFile wct.conf.windows.json --skip-plugin local && wct --configFile wct.conf.json --skip-plugin local"
   },
   "semistandard": {
     "about": "https://github.com/Flet/semistandard#javascript-semi-standard-style",
@@ -72,6 +73,7 @@
       "analysis.json",
       "gulpfile.js"
     ],
+    "parser": "babel-eslint",
     "plugin": "html"
   },
   "stylelint": {
