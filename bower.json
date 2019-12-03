@@ -1,6 +1,6 @@
 {
   "name": "resettable-properties-behavior",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Polymer behavior that lets you easily reset polymer element properties to their default values.",
   "main": "resettable-properties-behavior.html",
   "dependencies": {

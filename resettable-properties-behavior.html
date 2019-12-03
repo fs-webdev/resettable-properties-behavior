@@ -43,6 +43,8 @@ ResettablePropertiesBehavior = { // eslint-disable-line no-global-assign
       return acc;
     }, {});
 
+    // 2019-12-03 NOTE: We observed inconsistencies with resettable properties, where some property defaults would only be set if we Object.assign'd twice in a row. We even looped through the assignment manually, with the same results. Just going to do it terribly, for now.
+    Object.assign(this, defaultPropObject);
     Object.assign(this, defaultPropObject);
   },
 
