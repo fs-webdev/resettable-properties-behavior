@@ -48,8 +48,8 @@
     },
     "size-limit": {
       "path": "resettable-properties-behavior.html",
-      "limitNoPolymer": "1 KB",
-      "limitNoExternals": "1 KB"
+      "limitNoPolymer": "5 KB",
+      "limitNoExternals": "5 KB"
     }
   }
 }
